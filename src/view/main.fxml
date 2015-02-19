@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controllore">
+   <children>
+      <Label layoutX="206.0" layoutY="15.0" text="Tre Carte App">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Separator layoutX="14.0" layoutY="313.0" prefHeight="20.0" prefWidth="577.0" />
+      <Label layoutX="30.0" layoutY="349.0" text="Totale partite:" />
+      <Label fx:id="lblTotPartite" layoutX="137.0" layoutY="349.0" prefHeight="15.0" prefWidth="39.0" />
+      <Label layoutX="235.0" layoutY="349.0" text="Totale vittorie:" />
+      <Label fx:id="lblTotVittorie" layoutX="347.0" layoutY="349.0" prefHeight="15.0" prefWidth="39.0" />
+      <Label layoutX="435.0" layoutY="349.0" text="\% vittorie:" />
+      <Label fx:id="lblPercentVittorie" layoutX="520.0" layoutY="349.0" prefHeight="15.0" prefWidth="39.0" />
+      <Button fx:id="btnCarta1" layoutX="57.0" layoutY="84.0" mnemonicParsing="false" onAction="#premi_0" prefHeight="206.0" prefWidth="146.0" text="Carta 1" />
+      <Button fx:id="btnCarta2" layoutX="235.0" layoutY="84.0" mnemonicParsing="false" onAction="#premi_1" prefHeight="206.0" prefWidth="146.0" text="Carta 2" />
+      <Button fx:id="btnCarta3" layoutX="406.0" layoutY="84.0" mnemonicParsing="false" onAction="#premi_2" prefHeight="206.0" prefWidth="146.0" text="Carta 3" />
+      <Label layoutX="30.0" layoutY="48.0" text="Trova l'asso:" />
+      <Button fx:id="btnNuova" layoutX="426.0" layoutY="15.0" mnemonicParsing="false" onAction="#nuovaPartita" text="Nuova Partita" />
+      <Label fx:id="lblInfo" layoutX="239.0" layoutY="298.0" prefHeight="15.0" prefWidth="138.0" />
+   </children>
+</Pane>
