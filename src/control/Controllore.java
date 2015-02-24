@@ -9,19 +9,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Controllore implements Initializable {
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //
+    public void initialize(URL url, ResourceBundle rb) {        
+        this.nuovaPartita(null);
     }
     
     private Random estrattore = new Random();
     
     private int cartaVincente;
     
-    private int totale = 1;
+    private int totale = 0;
     private int vinte = 0;   
     
     @FXML private Label lblTotPartite;
@@ -32,6 +34,19 @@ public class Controllore implements Initializable {
     @FXML private Button btnCarta1;
     @FXML private Button btnCarta2;
     @FXML private Button btnCarta3;
+    
+    Image retroCartaImg = new Image(getClass().getResourceAsStream("../view/carta.jpg"));
+    Image assoCartaImg = new Image(getClass().getResourceAsStream("../view/asso.jpg"));
+    Image fanteCartaImg = new Image(getClass().getResourceAsStream("../view/fante.jpg"));
+    Image donnaCartaImg = new Image(getClass().getResourceAsStream("../view/donna.jpg"));
+    
+    ImageView retroCarta1 = new ImageView(retroCartaImg);
+    ImageView retroCarta2 = new ImageView(retroCartaImg);
+    ImageView retroCarta3 = new ImageView(retroCartaImg);  
+    
+    ImageView assoCarta = new ImageView(assoCartaImg);
+    ImageView fanteCarta = new ImageView(fanteCartaImg);
+    ImageView donnaCarta = new ImageView(donnaCartaImg); 
     
     @FXML
     private void nuovaPartita (ActionEvent ae) {
@@ -45,13 +60,17 @@ public class Controllore implements Initializable {
         btnCarta2.setDisable(false);
         btnCarta3.setDisable(false);
         
-        btnCarta1.setText("Carta 1");
-        btnCarta2.setText("Carta 2");
-        btnCarta3.setText("Carta 3");
-        
         btnCarta1.setStyle("-fx-base: #E6E6E6;");
         btnCarta2.setStyle("-fx-base: #E6E6E6;");
         btnCarta3.setStyle("-fx-base: #E6E6E6;");
+                
+        btnCarta1.setText("");
+        btnCarta2.setText("");
+        btnCarta3.setText("");
+        
+        btnCarta1.setGraphic(retroCarta1);
+        btnCarta2.setGraphic(retroCarta2);
+        btnCarta3.setGraphic(retroCarta3);
     }   
         
     @FXML
@@ -80,12 +99,12 @@ public class Controllore implements Initializable {
         }
     }
     
-    private void setButton (int b) {
+    private void setButton (int button) {
         btnCarta1.setDisable(true);
         btnCarta2.setDisable(true);
         btnCarta3.setDisable(true);
         
-        switch (b) {
+        switch (button) {
             case 0:  
                 btnCarta2.setStyle("-fx-base: #669999;");
                 btnCarta3.setStyle("-fx-base: #669999;");
@@ -127,21 +146,41 @@ public class Controllore implements Initializable {
                 break;                
         }
         
+        boolean b = estrattore.nextBoolean();
+        
         switch (this.cartaVincente) {
             case 0:
-                btnCarta1.setText("Asso");
-                btnCarta2.setText("Fante");
-                btnCarta3.setText("Cavallo");
+                btnCarta1.setGraphic(assoCarta);
+                if (b) {
+                    btnCarta2.setGraphic(fanteCarta);
+                    btnCarta3.setGraphic(donnaCarta);
+                }
+                else {
+                    btnCarta2.setGraphic(donnaCarta);
+                    btnCarta3.setGraphic(fanteCarta);
+                }
                 break;
-            case 1:
-                btnCarta1.setText("Fante");
-                btnCarta2.setText("Asso");                
-                btnCarta3.setText("Cavallo");
+            case 1:                
+                btnCarta2.setGraphic(assoCarta);
+                if (b) {
+                    btnCarta1.setGraphic(fanteCarta);
+                    btnCarta3.setGraphic(donnaCarta);
+                }
+                else {
+                    btnCarta1.setGraphic(donnaCarta);
+                    btnCarta3.setGraphic(fanteCarta);
+                }
                 break;
-            case 2:
-                btnCarta1.setText("Cavallo");
-                btnCarta2.setText("Fante");
-                btnCarta3.setText("Asso");
+            case 2:                
+                btnCarta3.setGraphic(assoCarta);
+                if (b) {
+                    btnCarta1.setGraphic(donnaCarta);
+                    btnCarta2.setGraphic(fanteCarta);
+                }
+                else {
+                    btnCarta1.setGraphic(fanteCarta);
+                    btnCarta2.setGraphic(donnaCarta);
+                }
                 break;
         }
         
